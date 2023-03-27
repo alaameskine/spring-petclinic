@@ -2,11 +2,13 @@
     agent any
     tools {
         gradle 'Gradle'
+        jdk 'Java17'
     }
 
     stages {
         stage('Build') {
             steps {
+                checkout scm
                 sh './gradlew clean build'
             }
         }
