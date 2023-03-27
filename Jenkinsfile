@@ -8,7 +8,6 @@
     stages {
         stage('Build') {
             steps {
-                checkout scm
                 sh './gradlew clean build'
             }
         }
@@ -16,9 +15,9 @@
             steps {
                 sh './gradlew dependencyCheckAnalyze'
             }
-        }
+        } 
         stage('SonarQube Scan') {
-            steps {
+            steps { 
                 withSonarQubeEnv('SonarQube') {
                     sh './gradlew sonarqube'
                 }
