@@ -1,7 +1,7 @@
  pipeline {
     agent any
     tools {
-        gradle 'Gradle'
+        gradle 'Gradle'            /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> Build */
         jdk 'Java17'
     }
 
