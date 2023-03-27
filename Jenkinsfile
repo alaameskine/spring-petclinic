@@ -6,16 +6,12 @@
     }
 
     stages {
-        stage('Build') {
-            steps {
-                sh './gradlew clean build'
-            }
-        }
         stage('Dependency Check') {
             steps {
-                sh './gradlew dependencyCheckAnalyze'
+                sh './gradlew dependencyCheckAnalyze --info'
             }
         } 
+
         stage('SonarQube Scan') {
             steps { 
                 withSonarQubeEnv('SonarQube') {
@@ -23,7 +19,14 @@
                 }
             }
         }
+
+        stage('Build') {
+            steps {
+                sh './gradlew clean build'
+            }
+        }
+        
+        
     }
 }
-
 
