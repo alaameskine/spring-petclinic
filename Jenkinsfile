@@ -12,7 +12,7 @@
             steps {
                 sh './gradlew clean build'
             }
-
+        }
 
         stage('Dependency Check') {
             steps {
@@ -34,4 +34,3 @@
     }
 }
 
- }
