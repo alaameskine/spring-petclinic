@@ -9,7 +9,7 @@
     stages {
         stage('Dependency Check') {
             steps {
-                sh './gradlew dependencyCheckAnalyze --info'
+                sh './gradlew dependencyCheckAnalyze --no-watch-fs --info'
             }
         } 
 
