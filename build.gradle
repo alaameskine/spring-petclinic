@@ -47,4 +47,6 @@ tasks.named('test') {
 
 }
 
-
+dependencyCheck {
+    failBuildOnCVSS=5
+}
