@@ -6,12 +6,16 @@
     }
 
 
-stage('Build') {
+
+        }
+    stages {
+
+        stage('Build') {
             steps {
                 sh './gradlew clean build'
             }
-        }
-    stages {
+
+            
         stage('Dependency Check') {
             steps {
                 sh './gradlew dependencyCheckAnalyze'
