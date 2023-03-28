@@ -50,18 +50,4 @@ tasks.named('test') {
 
 dependencyCheck {
     failBuildOnCVSS=5
-    format = 'HTML'
-    outputFile = file("$buildDir/reports/dependency-check-report.html")
-}
-
-task dependencyCheckAnalyze(type: org.owasp.dependencycheck.gradle.DependencyCheckTask) {
-    dependsOn 'assemble'
-    description = 'Runs a scan using the OWASP Dependency Check tool and generates an HTML report'
-    group = 'verification'
-    reports {
-        html {
-            enabled = true
-            destination file("$buildDir/reports/dependency-check-report.html")
-        }
-    }
 }
