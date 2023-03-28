@@ -15,7 +15,7 @@
 
         stage('SonarQube Scan') {
             steps { 
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('sonarqube') {
                     sh './gradlew sonar'
                 }
             }
