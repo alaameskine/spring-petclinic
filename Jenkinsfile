@@ -1,7 +1,7 @@
  pipeline {
     agent any
     tools {          
-          /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> Build */
+          /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> Build -> Artifact goes to Dockerhub -> Email Notification */
         jdk 'Java17'
     }
 
