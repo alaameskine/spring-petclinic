@@ -35,7 +35,6 @@ dependencies {
   runtimeOnly 'org.postgresql:postgresql'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  classpath 'org.owasp:dependency-check-gradle:8.1.2'
 }
 
 tasks.named('test') { 
