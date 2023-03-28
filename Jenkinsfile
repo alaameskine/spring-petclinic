@@ -5,6 +5,12 @@
         jdk 'Java17'
     }
 
+
+stage('Build') {
+            steps {
+                sh './gradlew clean build'
+            }
+        }
     stages {
         stage('Dependency Check') {
             steps {
@@ -20,11 +26,7 @@
             }
         }
 
-        stage('Build') {
-            steps {
-                sh './gradlew clean build'
-            }
-        }
+        
         
         
     }
