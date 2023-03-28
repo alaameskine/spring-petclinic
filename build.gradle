@@ -45,4 +45,4 @@ tasks.named('test') {
 
 }
 
-apply plugin = "dependency.check"
+apply plugin: "dependency.check"
