@@ -3,7 +3,7 @@ plugins {
   id 'org.springframework.boot' version '3.0.4'
   id 'io.spring.dependency-management' version '1.1.0'
   id 'org.graalvm.buildtools.native' version '0.9.20'
-  id 'dependency.check' version '0.0.6'
+ 
 }
 
 apply plugin: 'java'
@@ -15,10 +15,6 @@ sourceCompatibility = '17'
 
 repositories {
   mavenCentral()
-  maven {
-      url "https://plugins.gradle.org/m2/"
-  }
-
 }
 
 ext.webjarsFontawesomeVersion = "4.7.0"
@@ -41,7 +37,8 @@ dependencies {
   runtimeOnly 'org.postgresql:postgresql'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  classpath "gradle.plugin.com.thoughtworks.tools:dependency-check:0.0.6"
+  classpath 'org.owasp:dependency-check-gradle:8.0.0'
+ 
   
 }
 
@@ -50,4 +47,4 @@ tasks.named('test') {
 
 }
 
-apply plugin: "dependency.check"
+
