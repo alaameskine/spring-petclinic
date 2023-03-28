@@ -9,7 +9,7 @@
     stages {
         stage('Dependency Check') {
             steps {
-                sh './gradlew dependencyCheckAnalyze'
+                sh './gradlew dependencyCheckAnalyze --info'
             }
         } 
 
