@@ -6,7 +6,6 @@ plugins {
 }
 
 apply plugin: 'java'
-apply plugin: 'org.owasp.dependencycheck'
 
 group = 'org.springframework.samples'
 version = '3.0.0'
