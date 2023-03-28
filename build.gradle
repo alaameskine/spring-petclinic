@@ -37,12 +37,10 @@ dependencies {
   runtimeOnly 'org.postgresql:postgresql'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  classpath "gradle.plugin.com.thoughtworks.tools:dependency-check:0.0.6"
+  
 }
 
 tasks.named('test') { 
   useJUnitPlatform()
 
 }
-
-apply plugin: "dependency.check"
