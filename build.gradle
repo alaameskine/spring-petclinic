@@ -58,7 +58,7 @@ dependencyCheck {
 
 sonarqube {
     properties {
-        property 'sonar.host.url', 'http://172.17.0.2:9000/'
+        property 'sonar.host.url', 'http://172.17.0.3:9000/'
         property 'sonar.login', 'sqp_0390a19f1ab5e3d1e3f72045cd8413d487a5832e'
         property 'sonar.projectKey', 'spring-petclinic'
         property 'sonar.projectName', 'spring-petclinic'
