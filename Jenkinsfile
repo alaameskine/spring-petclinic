@@ -28,6 +28,7 @@
         stage ('Integration & Unit Testing') {
             steps {
                 sh './gradlew test'
+                junit '**/test-results/test/*.xml'
             }
         }
 
@@ -38,15 +39,17 @@
                     }
     
 
-           /* stage('Deploy to Dockerhub') {
-                docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
-                    def customImage = docker.build("alaameskine/spring-petclinic")
+            stage('Deploy to Dockerhub') {
+                steps {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
+                        def customImage = docker.build("alaameskine/spring-petclinic")
 
-                     Push the container to the custom Registry 
-                    customImage.push()
+                        Push the container to the custom Registry 
+                        customImage.push()
+                    }
                 } 
 
-            } */
+            } 
     }
                     post {
                         success {
