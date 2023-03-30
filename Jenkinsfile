@@ -44,6 +44,7 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
+                    sh 'systemctl start docker'
                     script {
                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
                         docker.withRegistry('https://registry.hub.docker.com', registry_crendentials) {
