@@ -25,6 +25,12 @@
             }
         }
 
+        stage ('Integration & Unit Testing') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+
             stage('Build') {
                         steps {
                             sh './gradlew clean build'
@@ -33,7 +39,7 @@
     
 
            /* stage('Deploy to Dockerhub') {
-                docker.withRegistry('https://registry.hub.docker.com', dockerhub) {
+                docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
                     def customImage = docker.build("alaameskine/spring-petclinic")
 
                      Push the container to the custom Registry 
