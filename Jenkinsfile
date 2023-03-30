@@ -45,9 +45,11 @@
             stage('Deploy to Dockerhub') {
                 steps {
                     script {
-                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        docker.withRegistry('', registry_credentials) {
-                            dockerImage.push()
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                            def customImage = docker.build("alaameskine/spring-petclinic")
+
+                            customImage.push()
+                            }
                         }
                         }
                     }
