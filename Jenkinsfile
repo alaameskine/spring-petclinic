@@ -46,7 +46,7 @@
                     script {
                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
                         docker.withRegistry('', registry_credentials) {
-                            docker.Image.push()
+                            dockerImage.push()
                         }
                         }
                     }
