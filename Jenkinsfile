@@ -17,13 +17,13 @@
             }
         } 
 
-        stage('SonarQube Scan') {
+       /* stage('SonarQube Scan') {
             steps { 
                 withSonarQubeEnv('sonarqube') {
                     sh './gradlew sonar'
                 }
             }
-        }
+        } */
 
         stage ('Integration & Unit Testing') {
             steps {
@@ -41,11 +41,13 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
+                    script {
                     docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
                         def customImage = docker.build("alaameskine/spring-petclinic")
 
                         Push the container to the custom Registry 
                         customImage.push()
+                        }
                     }
                 } 
 
