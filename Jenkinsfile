@@ -9,6 +9,7 @@
 
     tools {          
         jdk 'Java17'
+        docker 'Docker'
     }
 
 
