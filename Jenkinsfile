@@ -45,6 +45,7 @@
                 steps {
                     script {
                         withCredentials([[
+                            $class: 'UsernamePasswordMultiBinding',
                             credentialsId: 'dockerhub_credentials',
                             usernameVariable: 'DOCKERHUB_USERNAME',
                             passwordVariable: 'DOCKERHUB_PASSWORD'
