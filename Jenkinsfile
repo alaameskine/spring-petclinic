@@ -46,7 +46,7 @@
             stage('Deploy to Dockerhub') {
                 steps {
                     script {
-                         docker.withRegistry("", "dockerhub-credentials-id") {
+                         docker.withRegistry("", "dockerhub") {
                             def dockerImage = docker.build(DOCKER_IMAGE)
                             dockerImage.push()
                                  }
