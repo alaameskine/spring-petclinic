@@ -52,7 +52,6 @@
                     }
                 } 
 
-            } 
                    /* post {
                         success {
                             emailext body: 'The build is SUCCESSFUL', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
