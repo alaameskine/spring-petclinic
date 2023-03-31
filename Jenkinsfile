@@ -43,16 +43,11 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
-                    script {
-                        /*withCredentials([[
-                            $class: 'UsernamePasswordMultiBinding',
-                            credentialsId: 'dockerhub_credentials',
-                            usernameVariable: 'DOCKERHUB_USERNAME',
-                            passwordVariable: 'DOCKERHUB_PASSWORD'
-                        ]]) {
-                            docker.withRegistry('https://index.docker.io/v1/alaameskine/spring-petclinic', 'dockerhub_credentials') { */                         
-                            dockerImage = docker.build registry
+                    script {                        
+                            dockerImage = docker.build("alaameskine/spring-petclinic:${env.BUILD_ID}")
+                            docker.withRegistry('', 'dockerhub_credentials') {
                                 dockerImage.push()
+                                            }
                                         }
                                  }
                              }
