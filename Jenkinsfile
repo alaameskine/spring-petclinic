@@ -2,8 +2,7 @@
     /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> JUnit Test -> Build -> Artifact goes to Dockerhub -> Email Notification */
     agent any
     environment {     
-        registry = 'alaameskine/spring-petclinic'
-        registry_credentials = 'dockerhub'    
+        registry = 'alaameskine/spring-petclinic'   
         docker_image = '' 
             } 
 
@@ -46,7 +45,7 @@
                 steps {
                     script {
                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        docker.withRegistry('https://registry.hub.docker.com', registry_crendentials) {
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         
                             dockerImage.push()
                                  }
