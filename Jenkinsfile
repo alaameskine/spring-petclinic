@@ -2,10 +2,8 @@
     /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> JUnit Test -> Build -> Artifact goes to Dockerhub -> Email Notification */
     agent any
     environment {     
-        DOCKER_REGISTRY = "docker.io"
-        DOCKER_REPO = "alaameskine/spring-petclinic"
-        DOCKER_TAG = "${env.BUILD_NUMBER}"
-        DOCKER_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}:${DOCKER_TAG}"
+        registry = 'alaameskine/spring-petclinic'   
+        docker_image = '' 
             } 
 
     tools {          
@@ -46,16 +44,13 @@
             stage('Deploy to Dockerhub') {
                 steps {
                     script {
-                         docker.withRegistry("", "dockerhub") {
-                            def dockerImage = docker.build(DOCKER_IMAGE)
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
                             dockerImage.push()
                                  }
                              }
                         }
                     }
                 } 
-
- }
 
                    /* post {
                         success {
