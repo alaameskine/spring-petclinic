@@ -44,8 +44,8 @@
             stage('Deploy to Dockerhub') {
                 steps {
                     script {                        
-                            dockerImage = docker.build("alaameskine/spring-petclinic:${env.BUILD_ID}")
-                            docker.withRegistry('', 'dockerhub_credentials') {
+                            dockerImage = docker.build("alaameskine/spring-petclinic")
+                            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
                                 dockerImage.push()
                                             }
                                         }
