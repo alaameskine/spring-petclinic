@@ -50,7 +50,7 @@
                             usernameVariable: 'DOCKERHUB_USERNAME',
                             passwordVariable: 'DOCKERHUB_PASSWORD'
                         ]]) {
-                            docker.withRegistry('https://index.docker.io/v1/alaameskine/spring-petclinic', 'dockerhub') {                          
+                            docker.withRegistry('https://index.docker.io/v1/alaameskine/spring-petclinic', 'dockerhub_credentials') {                          
                             dockerImage = docker.build registry + "$BUILD_NUMBER"
                                 dockerImage.push()
                                         }
