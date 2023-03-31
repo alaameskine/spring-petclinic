@@ -2,7 +2,7 @@
     /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> JUnit Test -> Build -> Artifact goes to Dockerhub -> Email Notification */
     agent any
     environment {     
-        registry = 'alaameskine/spring-petclinic'   
+        registry = 'alaameskine/spring-petclinic:'   
         docker_image = '' 
             } 
 
@@ -44,15 +44,22 @@
             stage('Deploy to Dockerhub') {
                 steps {
                     script {
-                        dockerImage = docker.build registry + "$BUILD_NUMBER"
-                            dockerImage.push()
-                                    }
+                        withCredentials([[
+                            credentialsId: 'dockerhub_credentials',
+                            usernameVariable: 'DOCKERHUB_USERNAME',
+                            passwordVariable: 'DOCKERHUB_PASSWORD'
+                        ]]) {
+                            docker.withRegistry('https://index.docker.io/v1/alaameskine/spring-petclinic', 'dockerhub') {                          
+                            dockerImage = docker.build registry + "$BUILD_NUMBER"
+                                dockerImage.push()
+                                        }
                                  }
                              }
                         }
                     }
             
-
+    }
+ }
                    /* post {
                         success {
                             emailext body: 'The build is SUCCESSFUL', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
