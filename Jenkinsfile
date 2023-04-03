@@ -43,8 +43,10 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
-                    script {                        
-                            dockerImage = docker.build("alaameskine/spring-petclinic")
+                    script {  
+                            docker login                      
+                            dockerImage = docker.build registry
+                            docker tag spring-petclinic:latest alaameskine/spring-petclinic:wetheones
                                 dockerImage.push()
                                             
                                         }
