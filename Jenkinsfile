@@ -4,6 +4,7 @@
     environment {     
         registry = 'alaameskine/spring-petclinic'   
         docker_image = '' 
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub_v3')
             } 
 
     tools {          
@@ -43,6 +44,7 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     script {                        
                             dockerImage = docker.build("alaameskine/spring-petclinic")
                             docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub_v3') {
