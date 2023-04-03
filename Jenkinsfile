@@ -45,9 +45,10 @@ pipeline {
             stage('Deploy to Dockerhub') {
                 steps {
                     sh 'docker login -u alaameskine -p metalika5'
-                    script {                        
-                            dockerImage = docker.build("alaameskine/spring-petclinic")
-                            docker.withRegistry('', 'dockerhub_v3') {
+                    script {            
+                             docker.withRegistry('https://registry.docker.hub.com', 'dockerhub_v3') {            
+                                dockerImage = docker.build("alaameskine/spring-petclinic")
+                           
                                 dockerImage.push()
                                             
                                         }
