@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
     /* Pipeline: Checkout SCM -> Dependency Check -> SonarQube Analysis -> JUnit Test -> Build -> Artifact goes to Dockerhub -> Email Notification */
     agent any
     environment {     
@@ -47,7 +47,7 @@
                     sh 'docker login -u alaameskine -p metalika5'
                     script {                        
                             dockerImage = docker.build("alaameskine/spring-petclinic")
-                            docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub_v3') {
+                            docker.withRegistry('', 'dockerhub_v3') {
                                 dockerImage.push()
                                             
                                         }
@@ -66,6 +66,3 @@
                             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "al2a.meskine@gmail.com"; 
                             }
                     } */
-
-
-    
