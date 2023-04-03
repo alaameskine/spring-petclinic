@@ -44,7 +44,7 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    sh 'docker login -u alaameskine -p metalika5'
                     script {                        
                             dockerImage = docker.build("alaameskine/spring-petclinic")
                             docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub_v3') {
