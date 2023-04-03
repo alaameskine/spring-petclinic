@@ -45,9 +45,8 @@
                 steps {
                     script {                        
                             dockerImage = docker.build("alaameskine/spring-petclinic")
-                            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
                                 dockerImage.push()
-                                            }
+                                            
                                         }
                                  }
                              }
