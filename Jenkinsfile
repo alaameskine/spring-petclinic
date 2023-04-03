@@ -46,7 +46,6 @@
                     script {  
                             docker login                      
                             dockerImage = docker.build registry
-                            docker tag spring-petclinic:latest alaameskine/spring-petclinic:wetheones
                                 dockerImage.push()
                                             
                                         }
