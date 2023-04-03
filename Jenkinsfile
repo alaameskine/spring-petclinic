@@ -43,9 +43,8 @@
 
             stage('Deploy to Dockerhub') {
                 steps {
-                    script {  
-                            docker login                      
-                            dockerImage = docker.build registry
+                    script {                        
+                            dockerImage = docker.build registry + "$BUILD_NUMBER"
                                 dockerImage.push()
                                             
                                         }
