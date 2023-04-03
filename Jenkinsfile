@@ -40,9 +40,12 @@ pipeline {
                             sh './gradlew clean build'
                         }
                     }
-    
+    }
+}
 
-            /* stage('Deploy to Dockerhub') {
+            /* This stage has been moved in a brand new Jenkins job as it provides a setup to push & publish the image in Dockerhub
+            
+            stage('Deploy to Dockerhub') {
                 steps {
                     script {            
                              docker.withRegistry('https://registry.docker.hub.com', 'dockerhub_v3') {            
@@ -53,9 +56,7 @@ pipeline {
                                         }
                                  }
                              } */
-                        }
-                    }
-          
+                      
  
                    /* post {
                         success {
