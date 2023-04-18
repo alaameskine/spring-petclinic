@@ -20,13 +20,15 @@ pipeline {
             }
         } 
 
-       /* stage('SonarQube Scan') {
-            steps { 
-                withSonarQubeEnv('sonarqube') {
+        //Running a code quality analysis to detect issues
+        stage('SonarQube Analysis') {
+            steps {
+            /*    withSonarQubeEnv('sonarqube') {            
                     sh './gradlew sonar'
-                }
-            }
-        } */
+            } */
+            echo 'Check localhost:9000 for analysis details' 
+        }
+    }
 
         stage ('Integration & Unit Testing') {
             steps {
@@ -40,6 +42,12 @@ pipeline {
                             sh './gradlew clean build'
                         }
                     }
+
+                    stage('Deploy to Dockerhub'){
+            steps {
+                echo 'Running deploy_spring pipeline to do the deployment, it will start right after this build'
+            }
+         } 
     }
 }
 
